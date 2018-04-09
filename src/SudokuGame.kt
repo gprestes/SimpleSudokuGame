@@ -8,19 +8,18 @@ class SudokuGame {
     //This property holds a 2D array of booleans. It is used to show or hide a value from our Sudoku board.
     val visibleElements = initVisibleElements()
 
-    // ## STEP_1 ##
-    // Make this function return a 2D array of integers with the Sudoku game solution. Use these values:
-    //    3 5 9 6 1 8 4 2 7
-    //    7 4 2 5 3 9 8 6 1
-    //    1 6 8 4 7 2 9 5 3
-    //    4 2 3 8 9 5 7 1 6
-    //    5 8 7 1 6 4 3 9 2
-    //    6 9 1 7 2 3 5 8 4
-    //    2 7 5 9 4 6 1 3 8
-    //    8 3 4 2 5 1 6 7 9
-    //    9 1 6 3 8 7 2 4 5
     private fun createSolution(): Array<IntArray> {
-        TODO("STEP1 - You need to initialise the 2D array containing the solution. See the comment in code marked with ## STEP_1 ##")
+        return arrayOf(
+                intArrayOf(3, 5, 9, 6, 1, 8, 4, 2, 7),
+                intArrayOf(7, 4, 2, 5, 3, 9, 8, 6, 1),
+                intArrayOf(1, 6, 8, 4, 7, 2, 9, 5, 3),
+                intArrayOf(4, 2, 3, 8, 9, 5, 7, 1, 6),
+                intArrayOf(5, 8, 7, 1, 6, 4, 3, 9, 2),
+                intArrayOf(6, 9, 1, 7, 2, 3, 5, 8, 4),
+                intArrayOf(2, 7, 5, 9, 4, 6, 1, 3, 8),
+                intArrayOf(8, 3, 4, 2, 5, 1, 6, 7, 9),
+                intArrayOf(9, 1, 6, 3, 8, 7, 2, 4, 5)
+        )
     }
 
     // ## STEP_2 ##
