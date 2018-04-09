@@ -36,17 +36,8 @@ class SudokuGame {
         )
     }
 
-    // ## STEP_3 ##
-    // This function checks if the number entered by the user is valid in the context of the solution.
-    // It takes 3 parameters:
-    // userInput - number entered by the user
-    // row - the row where the number is placed in the board
-    // column - the column where the number is placed in the board
-    // E.g isInputValid(8, 1, 7) means we're asking if the number 8 entered by the user at position (1,7) is correct.
-    // Correct means the number entered by the user is the same as the value found in our `solution` 2D array.
-    // If it's the same, return `true`. Otherwise just return `false`, don't change anything else.
     fun isUserInputCorrect(userInput: Int, row: Int, column: Int): Boolean {
-        TODO("STEP3 - You need to check whether the number entered by the user at position (row, col) is correct. See the comment in code marked with ## STEP_3 ##")
+        return userInput == solution[row][column]
     }
 
     // ## STEP_4 ##
