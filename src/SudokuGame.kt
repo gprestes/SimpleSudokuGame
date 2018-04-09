@@ -22,23 +22,18 @@ class SudokuGame {
         )
     }
 
-    // ## STEP_2 ##
-    // Make this function return a 2D array with booleans used to show or hide a value from our sudoku board.
-    // E.g If you have the value `true` for the element positioned at row 0 and column 0, then the value at the same position
-    // in the sudoku board will be visible. It is `false`, the user doesn't see the number!
-    // Let's have 2 values of `false` so that our user will have to enter in 2 numbers in order to solve the sudoku game.
-    // Something like this - elements at positions (0,0) and (1,8) are `false`:
-    //    false  true true true true true true true true
-    //    true  true true true true true true true false
-    //    true  true true true true true true true true
-    //    true  true true true true true true true true
-    //    true  true true true true true true true true
-    //    true  true true true true true true true true
-    //    true  true true true true true true true true
-    //    true  true true true true true true true true
-    //    true  true true true true true true true true
     private fun initVisibleElements(): Array<BooleanArray> {
-        TODO("STEP2 - You need to initialise the 2D array containing boolean elements that mark visible items. See the comment in code marked with ## STEP_2 ##")
+        return arrayOf(
+                booleanArrayOf(false, true, true, true, true, true, true, true, true),
+                booleanArrayOf(true,  true, true, true, true, true, true, true, false),
+                booleanArrayOf(true,  true, true, true, true, true, true, true, true),
+                booleanArrayOf(true,  true, true, true, true, true, true, true, true),
+                booleanArrayOf(true,  true, true, true, true, true, true, true, true),
+                booleanArrayOf(true,  true, true, true, true, true, true, true, true),
+                booleanArrayOf(true,  true, true, true, true, true, true, true, true),
+                booleanArrayOf(true,  true, true, true, true, true, true, true, true),
+                booleanArrayOf(true,  true, true, true, true, true, true, true, true)
+        )
     }
 
     // ## STEP_3 ##
