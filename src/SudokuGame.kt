@@ -40,13 +40,14 @@ class SudokuGame {
         return userInput == solution[row][column]
     }
 
-    // ## STEP_4 ##
-    // This function checks if the sudoku is solved.
-    // Previously we checked every time the user entered a number if that was correct.
-    // After the user entered all numbers and they were correct it means all values in our `visibleElements` property  are true.
-    // In this method we'll just traverse the `visibleElements` 2D array. If all values are `true` it means sudoku is solved and we return `true`.
-    // If we find at least one value that is `false` then we stop. It means not all numbers were filled in by the user. We return `false`.
     fun isSolved(): Boolean {
-        TODO("STEP4 - You need to traverse our `visibleElements` 2D array and search for elements that are `false`. See the comment in code marked with ## STEP_4 ##")
+        visibleElements.forEach {
+            it.forEach {
+                if (!it) {
+                    return false
+                }
+            }
+        }
+        return true
     }
 }
