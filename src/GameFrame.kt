@@ -7,11 +7,11 @@ import java.awt.event.ActionListener
 import javax.swing.*
 
 /**
- * The sudoku game UI built using java swing
+ * The Sudoku game UI built using java swing.
  */
-class GameFrame(sudokuGame : SudokuGame) : JFrame() {
+class GameFrame(sudokuGame: SudokuGame) : JFrame() {
 
-    //9x9 matrix of JTextFields, each containing String "1" to "9", or empty String
+    // 9x9 matrix of JTextFields, each containing String "1" to "9", or empty String
     val cells = Array<Array<JTextField?>>(GRID_SIZE) { arrayOfNulls(GRID_SIZE) }
 
     init {
@@ -20,7 +20,7 @@ class GameFrame(sudokuGame : SudokuGame) : JFrame() {
 
         val listener = InputListener(sudokuGame, this)
 
-        //Construct 3x3 JPanels and add to the content-pane
+        // Construct 3x3 JPanels and add to the content-pane
         val panels = Array<Array<JPanel?>>(3) { arrayOfNulls(3) }
         for (row in 0 until 3) {
             for (col in 0 until 3) {
@@ -37,22 +37,23 @@ class GameFrame(sudokuGame : SudokuGame) : JFrame() {
         cp.preferredSize = Dimension(CANVAS_WIDTH, CANVAS_HEIGHT)
         pack()
 
-        defaultCloseOperation = JFrame.EXIT_ON_CLOSE
+        defaultCloseOperation = JFrame.EXIT_ON_CLOSE  // Handle window closing
         title = "Sudoku"
         isVisible = true
     }
+
 
     private fun createBoard(panel: JPanel, sudokuGame: SudokuGame, listener: InputListener, rowStart: Int, rowEnd: Int, colStart: Int, colEnd: Int) {
         panel.layout = GridLayout(3, 3)
         for (row in rowStart until rowEnd) {
             for (col in colStart until colEnd) {
-                cells[row][col] = JTextField()
-                panel.add(cells[row][col]) // ContentPane adds JTextField
+                cells[row][col] = JTextField() // Allocate element of array
+                panel.add(cells[row][col])            // ContentPane adds JTextField
                 if (!sudokuGame.visibleElements[row][col]) {
-                    cells[row][col]?.text = ""
+                    cells[row][col]?.text = ""     // set to empty string
                     cells[row][col]?.isEditable = true
                     cells[row][col]?.background = HIDDEN_NUMBER_CELL_BGCOLOR
-                    cells[row][col]?.addActionListener(listener)
+                    cells[row][col]?.addActionListener(listener)   // For all editable rows and cols
                 } else {
                     cells[row][col]?.text = sudokuGame.solution[row][col].toString() + ""
                     cells[row][col]?.isEditable = false
@@ -67,10 +68,10 @@ class GameFrame(sudokuGame : SudokuGame) : JFrame() {
     }
 
     companion object {
-        private val GRID_SIZE = 9
-        private val CELL_SIZE = 60
-        private val CANVAS_WIDTH = CELL_SIZE * GRID_SIZE
-        private val CANVAS_HEIGHT = CELL_SIZE * GRID_SIZE
+        private val GRID_SIZE = 9       // Size of the board with cells
+        private val CELL_SIZE = 60      // Cell width/height in pixels
+        private val CANVAS_WIDTH = CELL_SIZE * GRID_SIZE         // Board width in pixels
+        private val CANVAS_HEIGHT = CELL_SIZE * GRID_SIZE        // Board height in pixels
         private val FONT_NUMBERS = Font("Monospaced", Font.BOLD, 20)
         val INCORRECT_NUMBER_CELL_BGCOLOR = Color.RED
         val HIDDEN_NUMBER_CELL_BGCOLOR = Color.LIGHT_GRAY
@@ -81,24 +82,24 @@ class GameFrame(sudokuGame : SudokuGame) : JFrame() {
 
 class InputListener(private val sudokuGame: SudokuGame, private val sudokuFrame: GameFrame) : ActionListener {
 
-    override fun actionPerformed(e: ActionEvent?) {
+    override fun actionPerformed(e: ActionEvent) {
         // All the 9x9 JTextFields invoke this handler. We need to determine
         // which JTextField (which row and column) is the source for this invocation.
         var rowSelected = -1
         var colSelected = -1
 
         // Get the source object that fired the event
-        val source = e?.source as JTextField
+        val source = e.source as JTextField
         // Scan JTextFields for all rows and columns, and match with the source object
         var found = false
         var row = 0
         while (row < sudokuGame.visibleElements.size && !found) {
             var col = 0
             while (col < sudokuGame.visibleElements[row].size && !found) {
-                if (sudokuFrame.cells[row][col] == source) {
+                if (sudokuFrame.cells[row][col] === source) {
                     rowSelected = row
                     colSelected = col
-                    found = true
+                    found = true  // break the inner/outer loops
                 }
                 col++
             }
