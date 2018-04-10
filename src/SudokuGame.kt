@@ -3,18 +3,6 @@
  */
 class SudokuGame {
 
-    // ## STEP_1 ##
-    // Create a file named "sudoku_1" in the "src" folder of the project. Add the below content (the numbers separated by spaces, no other spaces or lines):
-    //    3 5 9 6 1 8 4 2 7
-    //    7 4 2 5 3 9 8 6 1
-    //    1 6 8 4 7 2 9 5 3
-    //    4 2 3 8 9 5 7 1 6
-    //    5 8 7 1 6 4 3 9 2
-    //    6 9 1 7 2 3 5 8 4
-    //    2 7 5 9 4 6 1 3 8
-    //    8 3 4 2 5 1 6 7 9
-    //    9 1 6 3 8 7 2 4 5
-
     // ## STEP_3 ##
     // Replace in "sudoku_1" file with 0 the numbers located at (0, 0) and (1, 8). You should have the content as below:
     //    0 5 9 6 1 8 4 2 7
