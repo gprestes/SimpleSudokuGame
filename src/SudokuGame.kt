@@ -26,21 +26,13 @@ class SudokuGame {
         return sudokuArray
     }
 
-    // ## STEP_6 ##
-    // Update the body of this function so that all numbers in "sudokuBoard" that are not 0 are visible.
-    // Debug and check the result is as expected (as the old one). Notice that now we cannot check the game again as we don't know the solution anymore.
     private fun initVisibleElements(): Array<BooleanArray> {
-        return arrayOf(
-                booleanArrayOf(false, true, true, true, true, true, true, true, true),
-                booleanArrayOf(true, true, true, true, true, true, true, true, false),
-                booleanArrayOf(true, true, true, true, true, true, true, true, true),
-                booleanArrayOf(true, true, true, true, true, true, true, true, true),
-                booleanArrayOf(true, true, true, true, true, true, true, true, true),
-                booleanArrayOf(true, true, true, true, true, true, true, true, true),
-                booleanArrayOf(true, true, true, true, true, true, true, true, true),
-                booleanArrayOf(true, true, true, true, true, true, true, true, true),
-                booleanArrayOf(true, true, true, true, true, true, true, true, true)
-        )
+
+        return Array(9) { indexRow ->
+            BooleanArray(9) { indexCol ->
+                sudokuBoard[indexRow][indexCol] != 0
+            }
+        }
     }
 
     // ## STEP_7 ##
