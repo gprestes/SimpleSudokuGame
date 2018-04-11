@@ -5,9 +5,6 @@ import java.io.File
  */
 class SudokuGame {
 
-    // ## STEP_8 ##
-    // Create a test to check the validation rules added in "isUserInputCorrect" function.
-
     // This property holds a 2D array of integers with the Sudoku game solution.
     val sudokuBoard = readSudokuBoard()
 
