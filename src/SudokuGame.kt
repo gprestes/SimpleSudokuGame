@@ -9,9 +9,7 @@ class SudokuGame {
     // Create a test to check the validation rules added in "isUserInputCorrect" function.
 
     // This property holds a 2D array of integers with the Sudoku game solution.
-    // ## STEP_5 ##
-    // Rename the property below to "sudokuBoard" as now we don't hold here anymore the solution of the game. Make sure you rename it in "GameFrame.kt" also.
-    val solution = readSudokuBoard()
+    val sudokuBoard = readSudokuBoard()
 
     // This property holds a 2D array of booleans. It is used to show or hide a value from our Sudoku board.
     val visibleElements = initVisibleElements()
@@ -49,7 +47,7 @@ class SudokuGame {
     // Update the body of this function to apply validation rules.
     // The user input is correct if the number entered was not used before on row / column / 3 x 3 area.
     fun isUserInputCorrect(userInput: Int, row: Int, col: Int): Boolean {
-        return solution[row][col] == userInput
+        return sudokuBoard[row][col] == userInput
     }
 
     fun isSolved(): Boolean {

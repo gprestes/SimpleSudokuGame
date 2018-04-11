@@ -55,7 +55,7 @@ class GameFrame(sudokuGame: SudokuGame) : JFrame() {
                     cells[row][col]?.background = HIDDEN_NUMBER_CELL_BGCOLOR
                     cells[row][col]?.addActionListener(listener)   // For all editable rows and cols
                 } else {
-                    cells[row][col]?.text = sudokuGame.solution[row][col].toString() + ""
+                    cells[row][col]?.text = sudokuGame.sudokuBoard[row][col].toString() + ""
                     cells[row][col]?.isEditable = false
                     cells[row][col]?.background = VISIBLE_NUMBER_CELL_BGCOLOR
                     cells[row][col]?.foreground = VISIBLE_NUMBER_CELL_TEXT
