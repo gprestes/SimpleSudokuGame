@@ -11,14 +11,12 @@ class SudokuGame {
     // This property holds a 2D array of integers with the Sudoku game solution.
     // ## STEP_5 ##
     // Rename the property below to "sudokuBoard" as now we don't hold here anymore the solution of the game. Make sure you rename it in "GameFrame.kt" also.
-    val solution = createSolution()
+    val solution = readSudokuBoard()
 
     // This property holds a 2D array of booleans. It is used to show or hide a value from our Sudoku board.
     val visibleElements = initVisibleElements()
 
-    // ## STEP_4 ##
-    // Rename this function to "readSudokuBoard".
-    private fun createSolution(): Array<IntArray> {
+    private fun readSudokuBoard(): Array<IntArray> {
         val sudokuFile = File("./src/sudoku_1")
 
         val sudokuArray = Array(9) { IntArray(9) }
