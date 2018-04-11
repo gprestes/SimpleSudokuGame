@@ -35,11 +35,16 @@ class SudokuGame {
         }
     }
 
-    // ## STEP_7 ##
-    // Update the body of this function to apply validation rules.
     // The user input is correct if the number entered was not used before on row / column / 3 x 3 area.
     fun isUserInputCorrect(userInput: Int, row: Int, col: Int): Boolean {
-        return sudokuBoard[row][col] == userInput
+        val startRow = row / 3 * 3
+        val startColumn = col / 3 * 3
+        (startRow until startRow + 3).forEach { i ->
+            (startColumn until startColumn + 3)
+                    .filter { j -> sudokuBoard[i][j] == userInput }
+                    .forEach { return false }
+        }
+        return true
     }
 
     fun isSolved(): Boolean {
