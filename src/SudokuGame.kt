@@ -5,11 +5,6 @@ import java.io.File
  */
 class SudokuGame {
 
-    // ## STEP_1 ## Create a res folder inside src and move sudoku_1 file there.
-
-    // ## STEP_2 ## Add 9 more sudoku_x files inside src/res folder.
-
-
     // This property holds a 2D array of integers with the initial Sudoku board.
     val sudokuBoard = readSudokuBoard()
 
