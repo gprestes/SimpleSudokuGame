@@ -25,7 +25,7 @@ class SudokuGame {
     // ## STEP_5 ## We need to make some more changes to the body of this function as we're planning to package the app
     // in a jar. When doing this the files cannot be accessed in the same way. They can only be retrieved by using input streams.
     private fun readSudokuBoard(): Array<IntArray> {
-        val sudokuFile = File("./src/sudoku_1")
+        val sudokuFile = File("./src/res/sudoku_1")
 
         val sudokuArray = Array(9) { IntArray(9) }
         sudokuFile.readLines().forEachIndexed { index, line ->
