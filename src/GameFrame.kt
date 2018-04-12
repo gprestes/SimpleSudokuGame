@@ -16,6 +16,9 @@ class GameFrame(sudokuGame: SudokuGame) : JFrame() {
 
     init {
         val cp = contentPane
+
+        // ## STEP_6 ## Extract the code that creates the sudoku board in a separate function.
+        // ## STEP_9 ## Position the two panels in the layout by using BorderLayout.NORTH and BorderLayout.SOUTH params.
         cp.layout = GridLayout(3, 3)
 
         val listener = InputListener(sudokuGame, this)
@@ -42,6 +45,20 @@ class GameFrame(sudokuGame: SudokuGame) : JFrame() {
         isVisible = true
     }
 
+    // ## STEP_7 ## Modify the newly created function "createSudokuPanel()" to put all UI widgets inside a JPanel object
+    // and return it. Remove the cp parameter and add this new panel to the content pane in the init{} block.
+
+    // ## STEP_8 ## Create a function named "createButtonPanel()" which creates a JPanel object, adds a button to it with
+    // the label "Start new game" and returns the panel.
+    // Add this new panel to the content pane in the init{} block.
+
+    // ## STEP_10 ## Add an action listener to the button created in "createButtonPanel()" function. Place inside the
+    // block the code to remove the 2 panels from the content pane and add new ones. When calling createSudokuPanel()
+    // make sure you create a new SudokuGame instance in order to get a completely new game.
+    // You have to call
+    // contentPane.repaint()
+    // pack()
+    // in order to refresh the UI.
 
     private fun createBoard(panel: JPanel, sudokuGame: SudokuGame, listener: InputListener, rowStart: Int, rowEnd: Int, colStart: Int, colEnd: Int) {
         panel.layout = GridLayout(3, 3)
@@ -68,15 +85,15 @@ class GameFrame(sudokuGame: SudokuGame) : JFrame() {
     }
 
     companion object {
-        private val GRID_SIZE = 9       // Size of the board with cells
-        private val CELL_SIZE = 60      // Cell width/height in pixels
-        private val CANVAS_WIDTH = CELL_SIZE * GRID_SIZE         // Board width in pixels
-        private val CANVAS_HEIGHT = CELL_SIZE * GRID_SIZE        // Board height in pixels
+        private const val GRID_SIZE = 9       // Size of the board with cells
+        private const val CELL_SIZE = 60      // Cell width/height in pixels
+        private const val CANVAS_WIDTH = CELL_SIZE * GRID_SIZE         // Board width in pixels
+        private const val CANVAS_HEIGHT = CELL_SIZE * GRID_SIZE        // Board height in pixels
         private val FONT_NUMBERS = Font("Monospaced", Font.BOLD, 20)
-        val INCORRECT_NUMBER_CELL_BGCOLOR = Color.RED
-        val HIDDEN_NUMBER_CELL_BGCOLOR = Color.LIGHT_GRAY
-        val VISIBLE_NUMBER_CELL_BGCOLOR = Color.WHITE
-        val VISIBLE_NUMBER_CELL_TEXT = Color.BLACK
+        val INCORRECT_NUMBER_CELL_BGCOLOR = Color.RED!!
+        val HIDDEN_NUMBER_CELL_BGCOLOR = Color.LIGHT_GRAY!!
+        val VISIBLE_NUMBER_CELL_BGCOLOR = Color.WHITE!!
+        val VISIBLE_NUMBER_CELL_TEXT = Color.BLACK!!
     }
 }
 
