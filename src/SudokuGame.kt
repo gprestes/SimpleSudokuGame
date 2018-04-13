@@ -12,16 +12,15 @@ class SudokuGame {
     val visibleElements = initVisibleElements()
 
     private fun randomName(): String {
-        val  randomNumber = (1..10).random()
+        val randomNumber = (1..10).random()
+        println("res/sudoku_$randomNumber")
         return "res/sudoku_$randomNumber"
     }
 
-    // ## STEP_4 ## Modify the body of the below function to call the "randomFileName()" function instead of the hardcoded
-    // path when assigning the sudokuFile variable. Make sure you keep "./src" path and append the file name to it.
     // ## STEP_5 ## We need to make some more changes to the body of this function as we're planning to package the app
     // in a jar. When doing this the files cannot be accessed in the same way. They can only be retrieved by using input streams.
     private fun readSudokuBoard(): Array<IntArray> {
-        val sudokuFile = File("./src/res/sudoku_1")
+        val sudokuFile = File("./src/${randomName()}")
 
         val sudokuArray = Array(9) { IntArray(9) }
         sudokuFile.readLines().forEachIndexed { index, line ->
