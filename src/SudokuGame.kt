@@ -13,7 +13,6 @@ class SudokuGame {
 
     private fun randomName(): String {
         val randomNumber = (1..10).random()
-        println("res/sudoku_$randomNumber")
         return "res/sudoku_$randomNumber"
     }
 
