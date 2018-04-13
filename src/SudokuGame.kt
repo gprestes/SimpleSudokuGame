@@ -11,9 +11,10 @@ class SudokuGame {
     // This property holds a 2D array of booleans. It is used to show or hide a value from our Sudoku board.
     val visibleElements = initVisibleElements()
 
-    // ## STEP_3 ## Create below a private function that returns a random file name along with relative path from the ones
-    // we added to the res folder. Name it "randomFileName".
-    // The return type should be a String and the value should be "res/sudoku_x", where x is any number between 1 and 10.
+    private fun randomName(): String {
+        val  randomNumber = (1..10).random()
+        return "res/sudoku_$randomNumber"
+    }
 
     // ## STEP_4 ## Modify the body of the below function to call the "randomFileName()" function instead of the hardcoded
     // path when assigning the sudokuFile variable. Make sure you keep "./src" path and append the file name to it.
