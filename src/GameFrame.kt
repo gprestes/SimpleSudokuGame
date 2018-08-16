@@ -1,7 +1,4 @@
-import java.awt.Color
-import java.awt.Dimension
-import java.awt.Font
-import java.awt.GridLayout
+import java.awt.*
 import java.awt.event.ActionEvent
 import java.awt.event.ActionListener
 import javax.swing.*
@@ -17,8 +14,8 @@ class GameFrame(sudokuGame: SudokuGame) : JFrame() {
     init {
         val cp = contentPane
 
-        cp.add(createSudokuPanel(sudokuGame))
-        cp.add(createButtonPanel())
+        cp.add(createSudokuPanel(sudokuGame), BorderLayout.NORTH)
+        cp.add(createButtonPanel(), BorderLayout.SOUTH)
         pack()
 
         defaultCloseOperation = JFrame.EXIT_ON_CLOSE  // Handle window closing
@@ -37,7 +34,7 @@ class GameFrame(sudokuGame: SudokuGame) : JFrame() {
 
     private fun createSudokuPanel(sudokuGame: SudokuGame): JPanel {
         val sudokuPanel = JPanel()
-        // ## STEP_9 ## Position the two panels in the layout by using BorderLayout.NORTH and BorderLayout.SOUTH params.
+
         sudokuPanel.layout = GridLayout(3, 3)
 
         val listener = InputListener(sudokuGame, this)
