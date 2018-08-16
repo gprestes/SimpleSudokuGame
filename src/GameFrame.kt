@@ -28,6 +28,15 @@ class GameFrame(sudokuGame: SudokuGame) : JFrame() {
 
         val button = JButton("Start new game")
 
+        button.addActionListener {
+            contentPane.removeAll()
+            contentPane.add(createSudokuPanel(SudokuGame()), BorderLayout.NORTH)
+            contentPane.add(createButtonPanel(), BorderLayout.SOUTH)
+
+            contentPane.repaint()
+            pack()
+        }
+
         buttonPanel.add(button)
         return buttonPanel
     }
@@ -57,14 +66,6 @@ class GameFrame(sudokuGame: SudokuGame) : JFrame() {
 
         return sudokuPanel
     }
-
-    // ## STEP_10 ## Add an action listener to the button created in "createButtonPanel()" function. Place inside the
-    // block the code to remove the 2 panels from the content pane and add new ones. When calling createSudokuPanel()
-    // make sure you create a new SudokuGame instance in order to get a completely new game.
-    // You have to call
-    // contentPane.repaint()
-    // pack()
-    // in order to refresh the UI.
 
     private fun createBoard(panel: JPanel, sudokuGame: SudokuGame, listener: InputListener, rowStart: Int, rowEnd: Int, colStart: Int, colEnd: Int) {
         panel.layout = GridLayout(3, 3)
