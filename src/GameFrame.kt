@@ -72,21 +72,23 @@ class GameFrame(sudokuGame: SudokuGame) : JFrame() {
         for (row in rowStart until rowEnd) {
             for (col in colStart until colEnd) {
                 cells[row][col] = JTextField() // Allocate element of array
-                panel.add(cells[row][col])            // ContentPane adds JTextField
-                if (!sudokuGame.visibleElements[row][col]) {
-                    cells[row][col]?.text = ""     // set to empty string
-                    cells[row][col]?.isEditable = true
-                    cells[row][col]?.background = HIDDEN_NUMBER_CELL_BGCOLOR
-                    cells[row][col]?.addActionListener(listener)   // For all editable rows and cols
-                } else {
-                    cells[row][col]?.text = sudokuGame.sudokuBoard[row][col].toString() + ""
-                    cells[row][col]?.isEditable = false
-                    cells[row][col]?.background = VISIBLE_NUMBER_CELL_BGCOLOR
-                    cells[row][col]?.foreground = VISIBLE_NUMBER_CELL_TEXT
-                }
-                // Beautify all the cells
-                cells[row][col]?.horizontalAlignment = JTextField.CENTER
-                cells[row][col]?.font = FONT_NUMBERS
+
+                panel.add(cells[row][col]?.also { cell ->
+                    if (!sudokuGame.visibleElements[row][col]) {
+                        cell.text = ""     // set to empty string
+                        cell.isEditable = true
+                        cell.background = HIDDEN_NUMBER_CELL_BGCOLOR
+                        cell.addActionListener(listener)   // For all editable rows and cols
+                    } else {
+                        cell.text = sudokuGame.sudokuBoard[row][col].toString() + ""
+                        cell.isEditable = false
+                        cell.background = VISIBLE_NUMBER_CELL_BGCOLOR
+                        cell.foreground = VISIBLE_NUMBER_CELL_TEXT
+                    }
+                    // Beautify all the cells
+                    cell.horizontalAlignment = JTextField.CENTER
+                    cell.font = FONT_NUMBERS
+                })
             }
         }
     }
