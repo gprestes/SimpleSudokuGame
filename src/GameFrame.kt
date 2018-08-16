@@ -2,6 +2,7 @@ import java.awt.Color
 import java.awt.Dimension
 import java.awt.Font
 import java.awt.GridLayout
+import java.awt.Container
 import java.awt.event.ActionEvent
 import java.awt.event.ActionListener
 import javax.swing.*
@@ -17,7 +18,15 @@ class GameFrame(sudokuGame: SudokuGame) : JFrame() {
     init {
         val cp = contentPane
 
-        // ## STEP_6 ## Extract the code that creates the sudoku board in a separate function.
+        createSudokuPanel(cp, sudokuGame)
+        pack()
+
+        defaultCloseOperation = JFrame.EXIT_ON_CLOSE  // Handle window closing
+        title = "Sudoku"
+        isVisible = true
+    }
+
+    private fun createSudokuPanel(cp: Container, sudokuGame: SudokuGame) {
         // ## STEP_9 ## Position the two panels in the layout by using BorderLayout.NORTH and BorderLayout.SOUTH params.
         cp.layout = GridLayout(3, 3)
 
@@ -38,11 +47,6 @@ class GameFrame(sudokuGame: SudokuGame) : JFrame() {
 
         // Set the size of the content-pane and pack all the components under this container.
         cp.preferredSize = Dimension(CANVAS_WIDTH, CANVAS_HEIGHT)
-        pack()
-
-        defaultCloseOperation = JFrame.EXIT_ON_CLOSE  // Handle window closing
-        title = "Sudoku"
-        isVisible = true
     }
 
     // ## STEP_7 ## Modify the newly created function "createSudokuPanel()" to put all UI widgets inside a JPanel object
