@@ -2,7 +2,6 @@ import java.awt.Color
 import java.awt.Dimension
 import java.awt.Font
 import java.awt.GridLayout
-import java.awt.Container
 import java.awt.event.ActionEvent
 import java.awt.event.ActionListener
 import javax.swing.*
@@ -18,7 +17,7 @@ class GameFrame(sudokuGame: SudokuGame) : JFrame() {
     init {
         val cp = contentPane
 
-        createSudokuPanel(cp, sudokuGame)
+        cp.add(createSudokuPanel(sudokuGame))
         pack()
 
         defaultCloseOperation = JFrame.EXIT_ON_CLOSE  // Handle window closing
@@ -26,9 +25,10 @@ class GameFrame(sudokuGame: SudokuGame) : JFrame() {
         isVisible = true
     }
 
-    private fun createSudokuPanel(cp: Container, sudokuGame: SudokuGame) {
+    private fun createSudokuPanel(sudokuGame: SudokuGame): JPanel {
+        val sudokuPanel = JPanel()
         // ## STEP_9 ## Position the two panels in the layout by using BorderLayout.NORTH and BorderLayout.SOUTH params.
-        cp.layout = GridLayout(3, 3)
+        sudokuPanel.layout = GridLayout(3, 3)
 
         val listener = InputListener(sudokuGame, this)
 
@@ -41,16 +41,15 @@ class GameFrame(sudokuGame: SudokuGame) : JFrame() {
                 panels[row][col] = panel
                 // Construct 9x9 JTextFields and add to the content-pane
                 createBoard(panel, sudokuGame, listener, row * 3, row * 3 + 3, col * 3, col * 3 + 3)
-                cp.add(panel)
+                sudokuPanel.add(panel)
             }
         }
 
         // Set the size of the content-pane and pack all the components under this container.
-        cp.preferredSize = Dimension(CANVAS_WIDTH, CANVAS_HEIGHT)
-    }
+        sudokuPanel.preferredSize = Dimension(CANVAS_WIDTH, CANVAS_HEIGHT)
 
-    // ## STEP_7 ## Modify the newly created function "createSudokuPanel()" to put all UI widgets inside a JPanel object
-    // and return it. Remove the cp parameter and add this new panel to the content pane in the init{} block.
+        return sudokuPanel
+    }
 
     // ## STEP_8 ## Create a function named "createButtonPanel()" which creates a JPanel object, adds a button to it with
     // the label "Start new game" and returns the panel.
