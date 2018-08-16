@@ -18,11 +18,21 @@ class GameFrame(sudokuGame: SudokuGame) : JFrame() {
         val cp = contentPane
 
         cp.add(createSudokuPanel(sudokuGame))
+        cp.add(createButtonPanel())
         pack()
 
         defaultCloseOperation = JFrame.EXIT_ON_CLOSE  // Handle window closing
         title = "Sudoku"
         isVisible = true
+    }
+
+    private fun createButtonPanel(): JPanel {
+        val buttonPanel = JPanel()
+
+        val button = JButton("Start new game")
+
+        buttonPanel.add(button)
+        return buttonPanel
     }
 
     private fun createSudokuPanel(sudokuGame: SudokuGame): JPanel {
@@ -50,10 +60,6 @@ class GameFrame(sudokuGame: SudokuGame) : JFrame() {
 
         return sudokuPanel
     }
-
-    // ## STEP_8 ## Create a function named "createButtonPanel()" which creates a JPanel object, adds a button to it with
-    // the label "Start new game" and returns the panel.
-    // Add this new panel to the content pane in the init{} block.
 
     // ## STEP_10 ## Add an action listener to the button created in "createButtonPanel()" function. Place inside the
     // block the code to remove the 2 panels from the content pane and add new ones. When calling createSudokuPanel()
